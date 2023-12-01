@@ -15,7 +15,7 @@ const Page = ({ params }) => {
         if (!cookies?.auth) {
             router.push('/login')
         } else if (!params?.id) {
-            router.push('/start')
+            router.push('/templates')
         } else {
             setIsLoad(false)
         }
