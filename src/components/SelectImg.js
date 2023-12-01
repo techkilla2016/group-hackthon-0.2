@@ -4,14 +4,14 @@ import { Col, Row } from 'react-bootstrap'
 import Capture from '@/components/cupture'
 import axios from 'axios'
 
-const SelectImg = ({ setResult, setIsLoader, setTemp, id }) => {
+const SelectImg = ({ setResult, setIsLoader, setTemp, id, domain }) => {
     const [state, setState] = useState({
         choice: '',
         image: '',
     })
 
     useEffect(() => {
-        axios.post('/api/templates', { id: id }).then(res => {
+        axios.post(`${domain}/api/templates`, { id: id }).then(res => {
             setState({
                 ...state,
                 image: res.data?.encode

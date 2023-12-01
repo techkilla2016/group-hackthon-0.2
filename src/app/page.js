@@ -32,14 +32,14 @@ const Template = () => {
           <Row className='mobile'>
             {
               DemoDataMB?.map((item, keys) => {
-                return <Col xxl={4} xl={4} lg={4} md={6} sm={12} xs={12} >
+                return <Col xxl={4} xl={4} lg={4} md={6} sm={12} xs={12} key={keys}>
                   {
                     item?.map((curItem, index) => {
-                      return <>
+                      return <React.Fragment key={index}>
                         <div className='overflow-hidden my-2'>
                           <img src={curItem?.img} className='img-fluid' />
                         </div>
-                      </>
+                      </React.Fragment>
                     })
                   }
                 </Col>

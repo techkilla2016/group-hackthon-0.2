@@ -1,20 +1,21 @@
 @import '/public/css/style.scss';
 
 .desktop {
-    display: flex;
+    display: flex !important;
 
     @media screen and (max-width:992px) {
-        display: none;
+        display: none !important;
     }
 }
 
 .mobile {
-    display: none;
+    display: none !important;
+
     @media screen and (max-width:992px) {
-        display: flex;
+        display: flex !important;
     }
 }
 
-.pe-col{
+.pe-col {
     cursor: pointer;
 }
