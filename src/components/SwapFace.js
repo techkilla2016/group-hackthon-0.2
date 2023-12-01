@@ -47,13 +47,13 @@ const SwapFace = ({ temp, data, setIsLoader }) => {
     return (
         <>
             <Row className='sp-section align-items-center justify-content-center'>
-                <Col xxl={6} xl={6} lg={6} sm={6} xs={12} className='p-5'>
+                <Col xxl={6} xl={6} lg={6} sm={12} xs={12} className='p-5'>
                     <Card className='overflow-hidden'>
                         <Preview file={temp.image} />
                     </Card>
                 </Col>
 
-                <Col xxl={5} xl={5} lg={5} sm={5} xs={12} className='pt-5'>
+                <Col xxl={5} xl={5} lg={5} sm={12} xs={12} className='pt-5'>
                     <div className="sp-get-face">
                         <h3>Face</h3>
                         <div className="sp-face-section">

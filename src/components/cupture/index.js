@@ -25,11 +25,6 @@ const Capture = ({ setImgFile, file, handleSubmit }) => {
         setCameraOn(false);
     }
 
-    // const handleSubmit = () => {
-    //     // console.log("file : ", file)
-    //     console.log("screenshot : ", screenshot)
-    // }
-
     return (
         <div>
             <div className="capture">

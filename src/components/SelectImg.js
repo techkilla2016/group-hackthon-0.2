@@ -4,32 +4,34 @@ import { Col, Row } from 'react-bootstrap'
 import Capture from '@/components/cupture'
 import axios from 'axios'
 
-const SelectImg = ({ setResult, setIsLoader, setTemp, id, domain }) => {
+const SelectImg = ({ setResult, setIsLoader, setTemp, id, }) => {
     const [state, setState] = useState({
         choice: '',
         image: '',
     })
 
     useEffect(() => {
-        axios.post(`${domain}/api/templates`, { id: id }).then(res => {
+        setIsLoader(true)
+        axios.post(`/api/templates`, { id: id }).then(res => {
             setState({
                 ...state,
                 image: res.data?.encode
             })
+            console.log(res.data?.encode)
+            setIsLoader(false)
         }).catch(error => {
             console.log(error)
         })
     }, [])
 
     const handleSubmit = async () => {
+        console.log(state)
         try {
             setIsLoader(true)
             const res = await axios.post('https://b723-103-17-110-127.ngrok-free.app/rec', {
                 choice: state.choice.split(',')[1],
                 image: state.image.split(',')[1],
             })
-
-            console.log(res)
             setResult(res?.data)  // store result
             setTemp(state) // store template Image
             setIsLoader(false) // set Loader 
@@ -45,7 +47,6 @@ const SelectImg = ({ setResult, setIsLoader, setTemp, id, domain }) => {
             <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={12} className='d-flex justify-content-center'>
                 <Capture setImgFile={setState} file={state} handleSubmit={handleSubmit} />
             </Col>
-
         </Row>
     )
 }
