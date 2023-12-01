@@ -5,6 +5,8 @@ import Loader from '@/components/loader'
 import Header from '@/components/Header'
 import SwapFace from '@/components/SwapFace'
 import { Container } from 'react-bootstrap'
+import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/navigation'
 // import axios from 'axios'
 
 const Home = ({ params }) => {
@@ -12,6 +14,17 @@ const Home = ({ params }) => {
     const [temp, setTemp] = useState()
     const [isLoader, setIsLoader] = useState(false)
     const [dataList, setDataList] = useState({})
+    const [cookies] = useCookies(['auth'])
+    const router = useRouter()
+    useEffect(() => {
+        if (!cookies?.auth) {
+            router.push('/login')
+        } else if (!params.id) {
+            router.push('/templates')
+        } else {
+            setIsLoader(false)
+        }
+    }, [cookies])
     return (
         <>
             {isLoader ? <Loader /> : ''}

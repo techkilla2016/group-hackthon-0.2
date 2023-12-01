@@ -22,7 +22,6 @@ const Page = ({ params }) => {
     }, [cookies])
     return (
         <div className="alai-main">
-
             <div className="main">
                 {
                     isLoad ? <Loader /> : <Container>

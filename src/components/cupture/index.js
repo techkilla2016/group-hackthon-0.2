@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiArrowFromLeft } from 'react-icons/bi';
 import Webcam from 'react-webcam';
 import { FiCamera } from "react-icons/fi";
 import { MdFlipCameraAndroid } from "react-icons/md";
-import { useRouter } from 'next/navigation'
 const Capture = ({ setImgFile, file, handleSubmit }) => {
     const webcamRef = React.useRef(null);
     const [cameraOn, setCameraOn] = useState(true);
     const [screenshot, setScreenshot] = useState(null);
-    const router = useRouter()
     const handleCameraToggle = () => {
         setCameraOn(!cameraOn);
         setScreenshot(null)

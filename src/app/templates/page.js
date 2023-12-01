@@ -1,18 +1,27 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import { Col, Container, Modal, Row } from 'react-bootstrap'
 import DemoData from '@/data/templates/desktop'
 import DemoDataMB from '@/data/templates/mobile'
 import { MdStart } from "react-icons/md";
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Loader from '@/components/loader'
+import { useCookies } from 'react-cookie'
 const Template = () => {
     const [show, setShow] = React.useState(false);
     const [selected, setSelected] = useState(-1)
-    const [isLoader, setIsLoader] = useState(false)
+    const [isLoader, setIsLoader] = useState(true)
+    const [cookies] = useCookies(['auth'])
     const router = useRouter()
+    useEffect(() => {
+        if (!cookies?.auth) {
+            router.push('/login')
+        } else {
+            setIsLoader(false)
+        }
+    }, [cookies])
+
     const handleClose = () => setShow(false);
     const handleShow = (id) => {
         setSelected(id)
@@ -32,7 +41,7 @@ const Template = () => {
             <div className='alai-main'>
                 <div className="alai-container">
                     {/* header  */}
-                    <Header />
+                    <Header title="Please Select Your Template" />
                     <Container className='home'>
                         <Row className='desktop row'>
                             {

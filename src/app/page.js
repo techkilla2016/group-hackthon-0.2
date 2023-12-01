@@ -1,11 +1,22 @@
+"use client"
 import React from 'react'
 import Header from '@/components/Header'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import DemoData from '@/data/demo/desktop'
 import DemoDataMB from '@/data/demo/mobile'
 import { MdStart } from "react-icons/md";
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useCookies } from 'react-cookie'
 const Template = () => {
+  const router = useRouter()
+  const [cookies] = useCookies()
+  const handleStart = () => {
+    if (cookies.auth) {
+      router.push('/templates')
+    } else {
+      router.push('/login')
+    }
+  }
   return (
     <div className='alai-main'>
       <div className="alai-container">
@@ -48,10 +59,10 @@ const Template = () => {
           </Row>
         </Container>
         <div className="d-flex justify-content-center py-3 start-btn-section">
-          <Link href='/templates' className='btn swap-btn btn-warning'>
+          <button className='btn swap-btn btn-warning' onClick={handleStart}>
             <span className='px-1'> Start </span>
             <span className='px-1'><MdStart /></span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>
