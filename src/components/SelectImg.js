@@ -28,7 +28,7 @@ const SelectImg = ({ setResult, setIsLoader, setTemp, id, }) => {
         console.log(state)
         try {
             setIsLoader(true)
-            const res = await axios.post('https://b723-103-17-110-127.ngrok-free.app/rec', {
+            const res = await axios.post('https://6c06-103-17-110-127.ngrok-free.app/rec', {
                 choice: state.choice.split(',')[1],
                 image: state.image.split(',')[1],
             })
